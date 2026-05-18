@@ -36,7 +36,7 @@ export function DashboardPage() {
   });
   const [chartData, setChartData] = useState([]);
   const [catData, setCatData] = useState([]);
-  const { selectedMonth } = useMonth();
+  const { selectedMonth, updateAvailableMonths } = useMonth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +44,7 @@ export function DashboardPage() {
       try {
         const storedTransactions = await getTransactions();
         setAllTransactions(storedTransactions);
+        updateAvailableMonths(storedTransactions);
 
         const [selectedYear, selectedMonthNum] = selectedMonth.split('-').map(Number);
 

@@ -43,7 +43,7 @@ const defaultCategories = Object.keys(categoryConfig).map(name => ({
 }));
 
 export function BudgetPage() {
-  const { selectedMonth, setSelectedMonth, getMonthLabel, availableMonths } = useMonth();
+  const { selectedMonth, setSelectedMonth, getMonthLabel, availableMonths, updateAvailableMonths } = useMonth();
   const [income, setIncome] = useState('0');
   const [savingsGoal, setSavingsGoal] = useState('0');
   const [categories, setCategories] = useState(defaultCategories);
@@ -63,6 +63,8 @@ export function BudgetPage() {
           getBudget(monthName, selectedYear),
           getTransactions()
         ]);
+
+        updateAvailableMonths(transactionsData);
 
         const spendingMap = {};
         transactionsData.forEach(t => {

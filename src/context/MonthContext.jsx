@@ -10,25 +10,31 @@ export function MonthProvider({ children }) {
 
   const [availableMonths, setAvailableMonths] = useState([]);
 
-  useEffect(() => {
-    // Load transactions and derive available months
-    const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
+  const updateAvailableMonths = React.useCallback((transactions) => {
     const monthsMap = new Set();
 
     // Always include current month
     const now = new Date();
     monthsMap.add(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`);
 
-    storedTransactions.forEach(t => {
-      if (t.date) {
-        const d = new Date(t.date);
-        monthsMap.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
-      }
-    });
+    if (transactions && Array.isArray(transactions)) {
+      transactions.forEach(t => {
+        if (t.date) {
+          const d = new Date(t.date);
+          monthsMap.add(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
+        }
+      });
+    }
 
     const sortedMonths = Array.from(monthsMap).sort().reverse();
     setAvailableMonths(sortedMonths);
   }, []);
+
+  useEffect(() => {
+    // Graceful fallback to localStorage on initial load
+    const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    updateAvailableMonths(storedTransactions);
+  }, [updateAvailableMonths]);
 
   const getMonthLabel = (monthKey) => {
     const [year, month] = monthKey.split('-');
@@ -43,6 +49,7 @@ export function MonthProvider({ children }) {
         setSelectedMonth,
         availableMonths,
         getMonthLabel,
+        updateAvailableMonths,
       }}
     >
       {children}

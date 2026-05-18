@@ -32,7 +32,7 @@ export function AnalyticsPage() {
     expenseChange: 0,
     netChange: 0,
   });
-  const { selectedMonth } = useMonth();
+  const { selectedMonth, updateAvailableMonths } = useMonth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +40,7 @@ export function AnalyticsPage() {
       try {
         const storedTransactions = await getTransactions();
         setAllTransactions(storedTransactions);
+        updateAvailableMonths(storedTransactions);
 
         const [selectedYear, selectedMonthNum] = selectedMonth.split('-').map(Number);
         
