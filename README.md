@@ -1,6 +1,6 @@
-# 🪙 Xpensify — Premium Personal Finance Tracker
+# 🪙 Expensify — Premium Personal Finance Tracker
 
-Xpensify is a state-of-the-art, premium personal finance tracker designed to help users take complete control of their financial life. Featuring sleek dark modes, interactive HSL-tailored charts, budget limits, secure OTP-backed authentication, and deep analytics, Xpensify turns personal budgeting into an elegant experience.
+Expensify is a state-of-the-art, premium personal finance tracker designed to help users take complete control of their financial life. Featuring sleek dark modes, interactive HSL-tailored charts, budget limits, secure OTP-backed authentication, and deep analytics, Expensify turns personal budgeting into an elegant experience.
 
 ---
 
@@ -11,14 +11,14 @@ Ensure you have **Node.js** and **MongoDB** running locally.
 ### 1. Database Prerequisite
 MongoDB must be active on your machine. The default URI is:
 ```bash
-mongodb://127.0.0.1:27017/xpensify
+mongodb://127.0.0.1:27017/expensify
 ```
 
 ### 2. Setup Environment Variables
 Create a `.env` file inside the `backend/` directory:
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/xpensify
+MONGO_URI=mongodb://127.0.0.1:27017/expensify
 JWT_SECRET=your_super_secure_jwt_secret_key
 JWT_EXPIRE=30d
 
@@ -27,7 +27,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=dhruvkanpariya706@gmail.com
 SMTP_PASS=your-16-character-app-password
-SMTP_FROM=Xpensify <dhruvkanpariya706@gmail.com>
+SMTP_FROM=Expensify <dhruvkanpariya706@gmail.com>
 ```
 
 ### 3. Run Frontend & Backend Concurrently
@@ -64,7 +64,7 @@ npm run dev:full
 
 ## 🔒 User-Scoped Security & Database Architecture
 
-Every piece of data stored in **Xpensify** is strictly secured and scoped. Users can only view, create, edit, or delete items belonging to their authenticated session.
+Every piece of data stored in **Expensify** is strictly secured and scoped. Users can only view, create, edit, or delete items belonging to their authenticated session.
 
 ```mermaid
 graph TD
@@ -129,7 +129,7 @@ To support OTP generation for Forgot Password flows, configure your email creden
    SMTP_PORT=587
    SMTP_USER=dhruvkanpariya706@gmail.com
    SMTP_PASS=abcdefghijklmnop
-   SMTP_FROM=Xpensify <dhruvkanpariya706@gmail.com>
+   SMTP_FROM=Expensify <dhruvkanpariya706@gmail.com>
    ```
 
 ### Other Providers
