@@ -21,9 +21,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-              <PieChart className="w-5 h-5 text-white" />
-            </div>
+            <img src="/favicon.svg" alt="Expensify Logo" className="w-8 h-8" />
             <span className="font-semibold text-lg text-gray-900 dark:text-gray-100">Expensify</span>
           </Link>
 

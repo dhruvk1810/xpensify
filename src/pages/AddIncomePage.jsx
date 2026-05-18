@@ -70,8 +70,11 @@ export function AddIncomePage() {
     if (!incomeType) {
       newErrors.incomeType = 'Please select an income type';
     }
+    const wordCount = description.trim().split(/\s+/).filter(word => word.length > 0).length;
     if (!description.trim()) {
       newErrors.description = 'Please enter a description';
+    } else if (wordCount > 10) {
+      newErrors.description = 'Description cannot exceed 10 words';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -273,10 +276,9 @@ export function AddIncomePage() {
                   : 'border-gray-200 dark:border-gray-700 focus:ring-emerald-500'
               )}
               placeholder="Enter description..."
-              maxLength={200}
             />
             <p className="text-xs text-gray-400 mt-1 text-right">
-              {description.length}/200
+              {description.trim().split(/\s+/).filter(w => w.length > 0).length}/10 words
             </p>
             {errors.description && (
               <p className="text-red-500 text-sm mt-1">{errors.description}</p>

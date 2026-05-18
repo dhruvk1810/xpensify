@@ -83,9 +83,7 @@ export function ResetPasswordPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-gray-100 p-8 animate-fade-in text-center">
-          <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-6">
-            <PieChart className="w-6 h-6 text-white" />
-          </div>
+          <img src="/favicon.svg" alt="Expensify Logo" className="w-12 h-12 mx-auto mb-6" />
           <h1 className="text-2xl font-semibold text-gray-900 mb-2">Password Reset!</h1>
           <p className="text-gray-500 text-sm mb-6">
             Your password has been reset successfully. Redirecting to login...
@@ -103,9 +101,7 @@ export function ResetPasswordPage() {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-gray-100 p-8 animate-fade-in">
         {/* Logo */}
         <div className="flex justify-center mb-6">
-          <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center">
-            <PieChart className="w-6 h-6 text-white" />
-          </div>
+          <img src="/favicon.svg" alt="Expensify Logo" className="w-12 h-12" />
         </div>
 
         {/* Header */}

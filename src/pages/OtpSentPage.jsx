@@ -20,10 +20,8 @@ export function OtpSentPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-4 transition-colors duration-300">
       <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 animate-fade-in text-center transition-colors">
         {/* Logo (Consistency) */}
-        <div className="flex justify-center mb-8">
-          <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
-            <PieChart className="w-6 h-6 text-white" />
-          </div>
+        <div className="flex justify-center">
+          <img src="/favicon.svg" alt="Expensify Logo" className="w-12 h-12 mx-auto mb-6" />
         </div>
 
         {/* Header */}

@@ -14,6 +14,7 @@ import { SelectBox } from '@/components/ui/select-box';
 import { StatusBadge } from '@/components/shared/StatusBadge';
 import { cn } from '@/lib/utils';
 import { getTransactions, updateTransaction, deleteTransaction, deleteTransactions } from '@/lib/api';
+import { useMonth } from '@/context/MonthContext';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -125,6 +126,8 @@ export function TransactionsPage() {
 
   const transactionsPerPage = 10;
 
+  const { updateAvailableMonths } = useMonth();
+
   useEffect(() => {
     loadTransactions();
   }, []);
@@ -134,6 +137,7 @@ export function TransactionsPage() {
     try {
       const data = await getTransactions();
       setAllTransactions(data);
+      updateAvailableMonths(data);
     } catch (error) {
       console.error('Error loading transactions:', error);
     } finally {

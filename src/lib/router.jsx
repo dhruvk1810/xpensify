@@ -8,8 +8,7 @@ const RouterContext = createContext({
 
 export function RouterProvider({ children }) {
   const [currentPath, setCurrentPath] = useState(() => {
-    const hash = window.location.hash.slice(1);
-    return hash || '/';
+    return window.location.pathname + window.location.search || '/';
   });
 
   const navigate = useCallback((path) => {
@@ -17,18 +16,17 @@ export function RouterProvider({ children }) {
       window.history.go(path);
       return;
     }
-    window.location.hash = path;
+    window.history.pushState({}, '', path);
     setCurrentPath(path);
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1);
-      setCurrentPath(hash || '/');
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname + window.location.search || '/');
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   return (
@@ -58,7 +56,7 @@ export function Link({ to, children, className }) {
   
   return (
     <a
-      href={`#${to}`}
+      href={to}
       onClick={(e) => {
         e.preventDefault();
         navigate(to);
@@ -81,7 +79,7 @@ export function NavLink({ to, children, className }) {
 
   return (
     <a
-      href={`#${to}`}
+      href={to}
       onClick={(e) => {
         e.preventDefault();
         navigate(to);
