@@ -2,8 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { PieChart, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from '@/lib/router';
-
-const API_BASE = 'http://localhost:5000/api';
+import { API_BASE } from '@/lib/api';
 
 export function VerifyOtpPage() {
   const navigate = useNavigate();

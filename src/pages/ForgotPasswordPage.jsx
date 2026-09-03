@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Link, useNavigate } from '@/lib/router';
-
-const API_BASE = 'http://localhost:5000/api';
+import { API_BASE } from '@/lib/api';
 
 export function ForgotPasswordPage() {
   const navigate = useNavigate();
